@@ -21,7 +21,7 @@ jobs:
           SSHKEY: ${{ secrets.SSH_PRIVATE_KEY }}
           PORT: 22
           NAME: production
-        run: |
-            ssh production ls --help
-            cd /home/web/k-playlist/backend/
-            . start.sh
+          # script: |
+          #     ssh production ls --help
+          #     cd /home/web/k-playlist/backend/
+          #     . start.sh
