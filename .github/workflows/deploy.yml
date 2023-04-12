@@ -14,11 +14,14 @@ jobs:
           cd backend/
           pip3 install -r requirements.txt
       - name: SSH into server and deploy
-        uses: appleboy/ssh-action@master
+        uses: LuisEnMarroquin/setup-ssh-action@v2.0.0
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
+          ORIGIN: ${{ secrets.VPS_HOST }}
+          USER: ${{ secrets.VPS_USER }}
+          SSHKEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          PORT: 22
+          NAME: production
+        run: |
+            ssh production ls --help
             cd /home/web/k-playlist/backend/
             . start.sh
